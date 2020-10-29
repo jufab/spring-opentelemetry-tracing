@@ -1,0 +1,31 @@
+version: "3"
+services:
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    networks:
+      - otelcol
+    ports:
+      - "16686:16686"
+      - "14250"
+  zipkin:
+    image: openzipkin/zipkin:latest
+    networks:
+      - otelcol
+    ports:
+      - "9412:9411"
+  otel-collector:
+    image: otel/opentelemetry-collector:0.12.0
+    networks:
+      - otelcol
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
+    ports:
+      - "55680:55680"
+      - "9411:9411"
+    depends_on:
+      - jaeger
+      - zipkin
+
+networks:
+  otelcol:

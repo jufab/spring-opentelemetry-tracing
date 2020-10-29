@@ -1,0 +1,30 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+  zipkin:
+exporters:
+  jaeger:
+    endpoint: jaeger:14250
+    insecure: true
+  zipkin:
+    endpoint: "http://zipkin:9411/api/v2/spans"
+  logging:
+    loglevel: debug
+processors:
+  batch:
+    send_batch_size: 1
+  resource:
+    attributes:
+      - key: tas.org
+        value: Team
+        action: insert
+      - key: tas.env
+        value: QA
+        action: insert
+service:
+  pipelines:
+    traces:
+      receivers: [otlp,zipkin]
+      processors: [resource,batch]
+      exporters: [jaeger,zipkin,logging]
