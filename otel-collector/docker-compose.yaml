@@ -8,7 +8,7 @@ services:
       - "16686:16686"
       - "14250"
   zipkin:
-    image: openzipkin/zipkin:latest
+    image: openzipkin/zipkin-slim:2.22.2
     networks:
       - otelcol
     ports:
