@@ -1,11 +1,7 @@
 package fr.jufab.springtracing;
 
-
-import io.opentelemetry.api.OpenTelemetry;
-import io.opentelemetry.api.trace.Tracer;
 import io.opentelemetry.exporter.otlp.OtlpGrpcSpanExporter;
-import io.opentelemetry.sdk.OpenTelemetrySdk;
-import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
+import io.opentelemetry.sdk.trace.export.SpanExporter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -22,16 +18,12 @@ public class SpringTracingOtelApplication {
   }
 
   /**
-   * Override existing Tracer for Otel Exporter
+   * Override existing SpanExporter for Otel Exporter
    *
    * @return Tracer
    */
   @Bean
-  Tracer otelTracerWithGrpcExporter() {
-    OtlpGrpcSpanExporter spanExporter = OtlpGrpcSpanExporter.getDefault();
-    BatchSpanProcessor spanProcessor =
-        BatchSpanProcessor.builder(spanExporter).build();
-    OpenTelemetrySdk.getGlobalTracerManagement().addSpanProcessor(spanProcessor);
-    return OpenTelemetry.getGlobalTracer("spring-tracing-otel");
+  SpanExporter otelTracerWithGrpcExporter() {
+    return OtlpGrpcSpanExporter.builder().readSystemProperties().build();
   }
 }
