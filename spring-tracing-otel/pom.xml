@@ -48,7 +48,7 @@
     <dependency>
       <groupId>io.grpc</groupId>
       <artifactId>grpc-netty-shaded</artifactId>
-      <version>1.30.2</version>
+      <version>1.33.1</version>
     </dependency>
 
 
@@ -57,6 +57,7 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
+
   </dependencies>
 
 </project>
