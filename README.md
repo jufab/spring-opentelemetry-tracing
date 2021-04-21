@@ -4,8 +4,8 @@
 
 - [otel-collector](/otel-collector): docker-compose with opentelemetry-collector and, Jaeger and Zipkin for backend query
 - [spring-tracing-zipkin](/spring-tracing-zipkin): Project with spring-cloud-sleuth-zipkin
-- [spring-tracing-otel](/spring-tracing-otel): Project with spring-cloud-sleuth-otel for opentelemetry
-- [spring-tracing-opentelemetry](/spring-tracing-opentelemetry): Project with only opentelemetry
+- [spring-tracing-otel](/spring-tracing-otel): Project with spring-cloud-sleuth-otel for OpenTelemetry
+- [spring-tracing-opentelemetry](/spring-tracing-opentelemetry): Project with only OpenTelemetry
 
 
 ## How to
