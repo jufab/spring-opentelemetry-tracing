@@ -1,8 +1,8 @@
 package fr.jufab.springtracing;
 
-import io.opentelemetry.api.common.AttributeKey;
 import io.opentelemetry.api.common.Attributes;
 import io.opentelemetry.sdk.resources.Resource;
+import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,13 +18,14 @@ public class SpringTracingOtelApplication {
   }
 
   /**
-   * Service name with value otel.serviceName
-   *
+   * Service name with value otel.serviceName.
+   * By default, service name is define by spring.application.name properties
    * @param serviceName
    * @return Resource
    */
-  @Bean
+/*  @Bean
   Resource otelResource(@Value("${otel.serviceName}") String serviceName) {
-    return Resource.create(Attributes.of(AttributeKey.stringKey("service.name"), serviceName));
-  }
+    return Resource.getDefault()
+        .merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, serviceName)));
+  }*/
 }

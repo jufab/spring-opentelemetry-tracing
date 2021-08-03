@@ -8,14 +8,12 @@
     <artifactId>spring-tracing</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>fr.jufab</groupId>
   <artifactId>spring-tracing-opentelemetry</artifactId>
   <name>spring-tracing-opentelemetry</name>
   <description>spring with opentelemetry only</description>
 
   <properties>
     <java.version>11</java.version>
-    <spring-cloud.version>2020.0.0</spring-cloud.version>
   </properties>
 
 
@@ -31,12 +29,12 @@
     <dependency>
       <groupId>io.opentelemetry.instrumentation</groupId>
       <artifactId>opentelemetry-otlp-exporter-starter</artifactId>
-      <version>1.1.0-alpha</version>
+      <version>1.4.1-alpha</version>
     </dependency>
     <dependency>
       <groupId>io.opentelemetry</groupId>
       <artifactId>opentelemetry-semconv</artifactId>
-      <version>1.1.0-alpha</version>
+      <version>1.4.1-alpha</version>
     </dependency>
 
     <dependency>
