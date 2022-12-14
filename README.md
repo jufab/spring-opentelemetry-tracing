@@ -1,5 +1,7 @@
 # spring-tracing
 
+**version Spring 2.X. See main branch** 
+
 ## Content
 
 - [otel-collector](/otel-collector): docker-compose with opentelemetry-collector and, Jaeger and Zipkin for backend query
