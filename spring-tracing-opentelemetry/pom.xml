@@ -13,9 +13,8 @@
   <description>spring with opentelemetry only</description>
 
   <properties>
-    <java.version>11</java.version>
+    <java.version>17</java.version>
   </properties>
-
 
   <dependencies>
     <dependency>
@@ -28,13 +27,8 @@
     </dependency>
     <dependency>
       <groupId>io.opentelemetry.instrumentation</groupId>
-      <artifactId>opentelemetry-otlp-exporter-starter</artifactId>
-      <version>1.9.2-alpha</version>
-    </dependency>
-    <dependency>
-      <groupId>io.opentelemetry</groupId>
-      <artifactId>opentelemetry-semconv</artifactId>
-      <version>1.10.0-alpha</version>
+      <artifactId>opentelemetry-spring-boot-starter</artifactId>
+      <version>1.21.0-alpha</version>
     </dependency>
 
     <dependency>

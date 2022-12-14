@@ -28,21 +28,4 @@ public class SpringTracingOpentelemetryApplication {
     SpringApplication.run(SpringTracingOpentelemetryApplication.class, args);
   }
 
-  @Bean Resource otelResource(@Value("${otel.serviceName}") String serviceName) {
-    return Resource.getDefault().merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, serviceName)));
-  }
-
-  @Bean
-  public OpenTelemetry openTelemetry(SamplerProperties samplerProperties,
-      ContextPropagators contextPropagators,
-      OtlpGrpcSpanExporter spanExporter, Resource resource) {
-    return OpenTelemetrySdk.builder()
-        .setTracerProvider(SdkTracerProvider.builder()
-            .setResource(resource)
-            .addSpanProcessor(BatchSpanProcessor.builder(spanExporter).build())
-            .setSampler(Sampler.traceIdRatioBased(samplerProperties.getProbability()))
-            .build())
-        .setPropagators(contextPropagators)
-        .buildAndRegisterGlobal();
-  }
 }
