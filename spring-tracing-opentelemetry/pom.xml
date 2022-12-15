@@ -30,6 +30,13 @@
       <artifactId>opentelemetry-spring-boot-starter</artifactId>
       <version>1.21.0-alpha</version>
     </dependency>
+    <dependency>
+      <groupId>io.opentelemetry.instrumentation</groupId>
+      <artifactId>opentelemetry-resources</artifactId>
+      <version>1.21.0-alpha</version>
+    </dependency>
+
+
 
     <dependency>
       <groupId>org.springframework.boot</groupId>

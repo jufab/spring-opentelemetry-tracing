@@ -3,7 +3,6 @@ package fr.jufab.springtracing;
 import fr.jufab.springtracing.github.feign.Contributor;
 import fr.jufab.springtracing.github.feign.GithubFeign;
 import java.util.List;
-import org.springframework.cloud.sleuth.annotation.NewSpan;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
