@@ -12,10 +12,6 @@
   <name>spring-tracing-opentelemetry</name>
   <description>spring with opentelemetry only</description>
 
-  <properties>
-    <java.version>17</java.version>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -26,23 +22,25 @@
       <artifactId>spring-cloud-starter-openfeign</artifactId>
     </dependency>
     <dependency>
-      <groupId>io.opentelemetry.instrumentation</groupId>
-      <artifactId>opentelemetry-spring-boot-starter</artifactId>
-      <version>1.21.0-alpha</version>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
     <dependency>
       <groupId>io.opentelemetry.instrumentation</groupId>
-      <artifactId>opentelemetry-resources</artifactId>
-      <version>1.21.0-alpha</version>
+      <artifactId>opentelemetry-spring-boot-starter</artifactId>
+      <version>1.23.0-alpha</version>
     </dependency>
-
-
+    <dependency>
+      <groupId>io.opentelemetry</groupId>
+      <artifactId>opentelemetry-exporter-otlp</artifactId>
+    </dependency>
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
+
   </dependencies>
 
 </project>
