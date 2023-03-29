@@ -9,7 +9,7 @@ This project show how to activate tracing with SpringBoot 3.X and Opentelemetry.
 - [otel-collector](/otel-collector): docker-compose with opentelemetry-collector and, Jaeger and Zipkin for backend query
 - [spring-tracing-zipkin](/spring-tracing-zipkin): Project with micrometer-tracing-bridge-brave and zipkin reporter
 - [spring-tracing-otel](/spring-tracing-otel): Project with micrometer-tracing-bridge-otel and opentelemetry-exporter-zipkin
-- [spring-tracing-opentelemetry](/spring-tracing-opentelemetry): Project with only OpenTelemetry (doesn't work yet..)
+- [spring-tracing-opentelemetry](/spring-tracing-opentelemetry): Project with only OpenTelemetry
 
 ## How to
 

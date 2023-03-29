@@ -10,6 +10,11 @@ exporters:
       insecure: true
   zipkin:
     endpoint: "http://zipkin:9411/api/v2/spans"
+  prometheus:
+    endpoint: "0.0.0.0:9464"
+    resource_to_telemetry_conversion:
+      enabled: true
+    enable_open_metrics: true
   logging:
     loglevel: debug
 processors:
@@ -26,6 +31,10 @@ processors:
 service:
   pipelines:
     traces:
-      receivers: [otlp,zipkin]
-      processors: [resource,batch]
-      exporters: [jaeger,zipkin,logging]
+      receivers: [ otlp,zipkin ]
+      processors: [ resource,batch ]
+      exporters: [ jaeger,zipkin,logging ]
+    metrics:
+      receivers: [ otlp ]
+      processors: [ resource,batch ]
+      exporters: [ prometheus,logging ]
