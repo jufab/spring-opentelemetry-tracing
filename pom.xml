@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.0.4</version>
+    <version>3.1.0</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>fr.jufab</groupId>
@@ -17,7 +17,9 @@
 
   <properties>
     <java.version>17</java.version>
-    <spring-cloud.version>2022.0.1</spring-cloud.version>
+    <spring-cloud.version>2022.0.3</spring-cloud.version>
+    <otel.version>1.27.0</otel.version>
+    <otel-alpha.version>${otel.version}-alpha</otel-alpha.version>
   </properties>
 
   <modules>
@@ -38,7 +40,7 @@
       <dependency>
         <groupId>io.opentelemetry</groupId>
         <artifactId>opentelemetry-bom</artifactId>
-        <version>1.24.0</version>
+        <version>${otel.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>

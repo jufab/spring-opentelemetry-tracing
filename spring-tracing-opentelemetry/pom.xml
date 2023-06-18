@@ -28,7 +28,7 @@
     <dependency>
       <groupId>io.opentelemetry.instrumentation</groupId>
       <artifactId>opentelemetry-spring-boot-starter</artifactId>
-      <version>1.24.0-alpha</version>
+      <version>${otel-alpha.version}</version>
     </dependency>
     <dependency>
       <groupId>io.opentelemetry</groupId>
