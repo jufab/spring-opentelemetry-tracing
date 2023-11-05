@@ -2,11 +2,14 @@ receivers:
   otlp:
     protocols:
       grpc:
-      http:
   zipkin:
 exporters:
-  jaeger:
-    endpoint: jaeger:14250
+  otlp/jaeger:
+    endpoint: jaeger:4317
+    tls:
+      insecure: true
+  otlp/tempo:
+    endpoint: tempo:4317
     tls:
       insecure: true
   zipkin:
@@ -34,7 +37,7 @@ service:
     traces:
       receivers: [ otlp,zipkin ]
       processors: [ resource,batch ]
-      exporters: [ jaeger,zipkin,logging ]
+      exporters: [ otlp/jaeger,otlp/tempo,zipkin,logging ]
     metrics:
       receivers: [ otlp ]
       processors: [ resource,batch ]

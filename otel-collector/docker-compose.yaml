@@ -6,7 +6,7 @@ services:
       - otelcol
     ports:
       - "16686:16686"
-      - "14250"
+      - "4317"
   zipkin:
     image: openzipkin/zipkin-slim:latest
     networks:
@@ -14,7 +14,7 @@ services:
     ports:
       - "9412:9411"
   otel-collector:
-    image: otel/opentelemetry-collector-contrib:0.74.0
+    image: otel/opentelemetry-collector-contrib:0.88.0
     networks:
       - otelcol
     command: ["--config=/etc/otel-collector-config.yaml"]
@@ -32,7 +32,7 @@ services:
       - zipkin
 
   prometheus:
-    image: prom/prometheus:v2.43.0
+    image: prom/prometheus:v2.47.2
     command:
       - --web.console.templates=/etc/prometheus/consoles
       - --web.console.libraries=/etc/prometheus/console_libraries
@@ -42,6 +42,7 @@ services:
       - --web.enable-lifecycle
       - --web.route-prefix=/
       - --enable-feature=exemplar-storage
+      - --web.enable-remote-write-receiver
     networks:
       - otelcol
     volumes:
@@ -49,14 +50,29 @@ services:
     ports:
       - "9090:9090"
   grafana:
-    image: grafana/grafana:9.2.15
+    image: grafana/grafana:10.2.0
     networks:
       - otelcol
     volumes:
       - ./grafana/grafana.ini:/etc/grafana/grafana.ini
       - ./grafana/provisioning/:/etc/grafana/provisioning/
+    environment:
+      - GF_FEATURE_TOGGLES_ENABLE=traceqlEditor
     ports:
       - "3000:3000"
+
+  tempo:
+    image: grafana/tempo:latest
+    networks:
+      - otelcol
+    command: [ "-config.file=/etc/tempo.yaml" ]
+    volumes:
+      - ./tempo/tempo.yaml:/etc/tempo.yaml
+      #- ./tempo-data:/tmp/tempo
+    ports:
+      - "4317"
+      - "3200:3200"
+      - "9095:9095"
 
 networks:
   otelcol:
